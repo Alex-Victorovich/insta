@@ -12,12 +12,10 @@ const server = express()
 server.set('view engine', 'hbs')
 server.set('views', path.join(__dirname, 'src', 'views'))
 server.use(express.static(path.join(process.env.PWD, "public")))
-
-// эта строчка научила наш сервер принимать данные из пользовательской формы
 server.use(express.urlencoded({ extended: true }))
 
 server.get('/', (request, response) => {
-  const usersQuery = request.query // = { limit: '1' }
+  const usersQuery = request.query 
   let photoForRender = db.photo
 
   if (usersQuery.limit !== undefined && Number.isNaN(+usersQuery.limit) === false) {
@@ -33,7 +31,7 @@ server.post('/addressbook', (req, res) => {
   db.photo.push(dataFromForm)
 
   res.redirect('/')
-})
+});
 
 server.get('*', (req, res) => {
   res.render('404')
