@@ -2,8 +2,6 @@
 const express = require('express')
 const path = require('path')
 const { db } = require('./DB')
-// const dataFromDBFile = require('./DB')
-// const db = dataFromDBFile.db
 
 const PORT = 3000
 
